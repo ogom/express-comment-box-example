@@ -5,7 +5,23 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <div className="commentBox">
+      <h1>Comments</h1>
+      <div className="commentList">
+        <% comments.forEach(function(comment){ %>
+        <div className="comment">
+          <h2 className="commentAuthor">
+            <%= comment.author %>
+          </h2>
+          <%- comment.text -%>
+        </div>
+        <% }) %>
+      </div>
+      <form className="commentForm" action="/" method="post">
+        <input type="text" placeholder="Your name" name="author" />
+        <input type="text" placeholder="Say something..." name="text" />
+        <input type="submit" value="Post" />
+      </form>
+    </div>
   </body>
 </html>
